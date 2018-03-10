@@ -9,16 +9,16 @@ include_directories( src/main/cpp/include )
 add_library( sabine_aec
              STATIC
              IMPORTED )
-#add_library( sabine_ans
-#             SHARED
-#             IMPORTED )
+add_library( sabine_ans
+             SHARED
+             IMPORTED )
 set_target_properties( sabine_aec
                        PROPERTIES IMPORTED_LOCATION
                        ../../../../libs/${ANDROID_ABI}/libsabine_aec.so )
 
-#set_target_properties( sabine_ans
-#                       PROPERTIES IMPORTED_LOCATION
-#                       ../../../../libs/${ANDROID_ABI}/libsabine_ans.so )
+set_target_properties( sabine_ans
+                       PROPERTIES IMPORTED_LOCATION
+                       ../../../../libs/${ANDROID_ABI}/libsabine_ans.so )
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -54,7 +54,7 @@ find_library( # Sets the name of the path variable.
 target_link_libraries( # Specifies the target library.
                        hyphenate_av_aec
                        sabine_aec
-                       #sabine_ans
+                       sabine_ans
                        #android
                        # Links the target library to the log library
                        # included in the NDK.

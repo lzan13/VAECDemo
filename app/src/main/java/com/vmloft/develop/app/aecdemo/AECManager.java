@@ -25,11 +25,11 @@ public class AECManager {
      * @param delay 延迟采样数
      * @param doNLP 是否执行非线性处理，0 不执行， 1 执行
      */
-    public void openAEC(int sampleRate, int frameSize, int delay, int doNLP) {
-        nativeOpenAEC(sampleRate, frameSize, delay, doNLP);
+    public void openAEC(int sampleRate, int delay, int doNLP) {
+        nativeOpenAEC(sampleRate, delay, doNLP);
     }
 
-    native void nativeOpenAEC(int sampleRate, int frameSize, int delay, int doNLP);
+    native void nativeOpenAEC(int sampleRate, int delay, int doNLP);
 
     /**
      * 关闭回升消除
@@ -58,10 +58,42 @@ public class AECManager {
 
     native void nativeNearProcess(short[] outBuffer, short[] nearBuffer);
 
-    public void bufferProcess(short[] buffer, short[] micBuffer, short[] accBuffer) {
-        nativeBufferProcess(buffer, micBuffer, accBuffer);
+
+    /**
+     * --------------------- 声音降噪处理 --------------------
+     */
+
+    /**
+     * 开启声音降噪处理
+     *
+     * @param sampleRate 音频采样率，支持: 8000/16000/32000/48000
+     * @param channels 声道数：1表示单声道、2表示立体声
+     * @param level 降噪等级取值范围:0.0 ~ 2.0、超出范围进行饱和处理；
+     */
+    public void openANS(int sampleRate, int channels, float level) {
+        nativeOpenANS(sampleRate, channels, level);
     }
 
-    native void nativeBufferProcess(short[] buffer, short[] micBuffer, short[] accBuffer);
+    native void nativeOpenANS(int sampleRate, int channels, float level);
 
+    /**
+     * 关闭声音降噪处理
+     */
+    public void closeANS() {
+        nativeCloseANS();
+    }
+
+    native void nativeCloseANS();
+
+    /**
+     * 声音降噪处理
+     *
+     * @param inBuffer 需要处理的数据
+     * @param outBuffer 处理后的数据
+     */
+    public void ansProcess(short[] inBuffer, short[] outBuffer) {
+        nativeANSProcess(inBuffer, outBuffer);
+    }
+
+    native void nativeANSProcess(short[] inBuffer, short[] outBuffer);
 }

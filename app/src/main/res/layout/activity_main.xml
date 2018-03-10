@@ -30,31 +30,36 @@
             android:id="@+id/btn_start_aec"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="开始 AEC" />
+            android:text="开始 回声消除" />
 
         <Button
-            android:id="@+id/btn_stop_aec"
+            android:id="@+id/btn_start_ans"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="停止 AEC" />
+            android:text="开始 声音降噪" />
 
         <Button
             android:id="@+id/btn_play_aec"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="播放 AEC 音频" />
+            android:text="播放 回声消除 音频" />
 
         <Button
             android:id="@+id/btn_play_near"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="播放 Near 音频" />
+            android:text="播放 麦克风采集到 音频" />
 
         <Button
-            android:id="@+id/btn_stop_play"
+            android:id="@+id/btn_play_ans"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="停止播放" />
+            android:text="播放 降噪处理 音频" />
 
+        <Button
+            android:id="@+id/btn_stop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="停止" />
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
